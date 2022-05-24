@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block conteudo %}
+<form method="post" enctype="multipart/form-data" >
+{% csrf_token %}
+{{form_professor |crispy}}
+<button type="submit" class="btn btn-primary my-4"> Cadastrar</button>
+</form>
+<table class="table">
+        <thead>
+         <th>#</th>
+        <th>Nome</th>
+
+        </thead>
+       <tbody>
+       {% for professor in professores %}
+       <td>{{professor.id}}</td>
+       <td>{{professor.nome_completo}}</td>
+       </tbody>
+        {% endfor%}
+{% endblock conteudo %}
